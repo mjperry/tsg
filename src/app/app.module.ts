@@ -1,5 +1,10 @@
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import {MatCheckboxModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
@@ -32,22 +37,21 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SystemVizComponent } from './system-viz/system-viz.component';
-import { RouterModule } from '@angular/router';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SystemVizComponent
+    SystemVizComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -82,12 +86,12 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
     NgxGraphModule,
     RouterModule.forRoot([
       {
-        path: '',
-        component: AppComponent
-      },
-      {
         path: 'system-viz',
         component: SystemVizComponent
+      },
+      {
+        path: 'image-upload',
+        component: ImageUploadComponent
       }
     ])
   ],
