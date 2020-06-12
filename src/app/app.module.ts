@@ -40,12 +40,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { SystemVizComponent } from './system-viz/system-viz.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { TableExportComponent } from './table-export/table-export.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SystemVizComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    TableExportComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,10 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
       {
         path: 'image-upload',
         component: ImageUploadComponent
+      },
+      {
+        path: 'table-export',
+        component: TableExportComponent
       }
     ])
   ],
