@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -41,18 +42,21 @@ import { SystemVizComponent } from './system-viz/system-viz.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { TableExportComponent } from './table-export/table-export.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SystemVizComponent,
     ImageUploadComponent,
-    TableExportComponent
+    TableExportComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     MatCheckboxModule,
     MatCheckboxModule,
@@ -98,6 +102,10 @@ import { TableExportComponent } from './table-export/table-export.component';
       {
         path: 'table-export',
         component: TableExportComponent
+      },
+      {
+        path: 'search-form',
+        component: SearchFormComponent
       }
     ])
   ],
