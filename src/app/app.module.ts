@@ -43,6 +43,7 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { TableExportComponent } from './table-export/table-export.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { FilesComponent } from './files/files.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SearchFormComponent } from './search-form/search-form.component';
     SystemVizComponent,
     ImageUploadComponent,
     TableExportComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +108,10 @@ import { SearchFormComponent } from './search-form/search-form.component';
       {
         path: 'search-form',
         component: SearchFormComponent
+      },
+      {
+        path: 'files',
+        component: FilesComponent
       }
     ])
   ],
