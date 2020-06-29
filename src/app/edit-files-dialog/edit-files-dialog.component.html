@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Edit File</h2>
+<mat-dialog-content class="mat-typography" fxLayout="column">
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="2%">
+        <div fxLayout="column" fxFlex="100">
+            <mat-form-field [matTooltip]="updatedFile.filename" matTooltipPosition="above">
+                <input matInput placeholder="Filename" [(ngModel)]="updatedFile.filename" 
+                [disabled]="true">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="2%">
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="Owner" [(ngModel)]="updatedFile.owner">
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="Status" [(ngModel)]="updatedFile.status">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="2%">
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="Country" [(ngModel)]="updatedFile.country">
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="System" [(ngModel)]="updatedFile.system">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="2%">
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="Mission" [(ngModel)]="updatedFile.mission">
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="Collector" [(ngModel)]="updatedFile.collector">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="2%">
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="Duration" [(ngModel)]="updatedFile.duration">
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+                <input matInput placeholder="Tags" [(ngModel)]="updatedFile.tags">
+            </mat-form-field>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="updatedFile" cdkFocusInitial color="accent"
+  [disabled]="!canUpdate()">Update</button>
+</mat-dialog-actions>

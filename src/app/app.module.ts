@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {MatCheckboxModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
@@ -44,6 +45,7 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { TableExportComponent } from './table-export/table-export.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { FilesComponent } from './files/files.component';
+import { EditFilesDialogComponent } from './edit-files-dialog/edit-files-dialog.component';
 
 @NgModule({
   declarations: [
@@ -52,12 +54,14 @@ import { FilesComponent } from './files/files.component';
     ImageUploadComponent,
     TableExportComponent,
     SearchFormComponent,
-    FilesComponent
+    FilesComponent,
+    EditFilesDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     FormsModule,
     HttpClientModule,
     MatCheckboxModule,
@@ -114,6 +118,9 @@ import { FilesComponent } from './files/files.component';
         component: FilesComponent
       }
     ])
+  ],
+  entryComponents: [
+    EditFilesDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
