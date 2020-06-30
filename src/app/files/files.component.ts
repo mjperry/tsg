@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditFilesDialogComponent } from '../edit-files-dialog/edit-files-dialog.component';
 
 export interface File {
@@ -41,7 +42,8 @@ export class FilesComponent implements OnInit {
     system: "ABC", mission: 111, collector: 1, duration: 30, tags: ["tag1", "tag2", "tag3", "tag4", "tag5"]}
   ];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataSource.data = this.files;
@@ -64,12 +66,15 @@ export class FilesComponent implements OnInit {
   openEditFilesDialog(file: File) {
     const dialogRef = this.dialog.open(EditFilesDialogComponent, {
       data: file,
-      width: '600px'
+      width: '800px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this._updateFile(result)
+        this._updateFile(result);
+        this._snackBar.open('File updated', 'OK', {
+          duration: 2000,
+        });
       }
     });
   }

@@ -56,8 +56,18 @@
         </div>
         <div fxLayout="column" fxFlex="50">
             <mat-form-field>
-                <input matInput placeholder="Tags" [(ngModel)]="updatedFile.tags">
-            </mat-form-field>
+                <mat-chip-list #tagsList>
+                  <mat-chip *ngFor="let tag of updatedFile.tags" color="accent" (removed)="removeTag(tag)" selected>
+                    {{tag}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="Tags..."
+                         [matChipInputFor]="tagsList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="true"
+                         (matChipInputTokenEnd)="addTag($event)">
+                </mat-chip-list>
+              </mat-form-field>
         </div>
     </div>
 </mat-dialog-content>
