@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Edit {{data.propType | titlecase}}</h2>
+<mat-dialog-content class="mat-typography" fxLayout="column">
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="2%">
+        <div fxLayout="column" fxFlex="100">
+            <mat-form-field>
+                <input matInput placeholder="{{data.propType | titlecase}}" [(ngModel)]="updatedProperty">
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Files
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+      
+          <mat-list>
+            <mat-divider></mat-divider>
+            <mat-list-item *ngFor="let file of data.files">
+              <mat-icon mat-list-icon color="accent">insert_drive_file</mat-icon>
+              <h4 mat-line [matTooltip]="file.filename" matTooltipPosition="above" 
+              [matTooltipDisabled]="file.filename.length <= 20">{{file.filename}}</h4>
+              <p mat-line> {{file.date | date}} </p>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>      
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="updatedProperty" cdkFocusInitial color="accent"
+  [disabled]="!canUpdate()">Update</button>
+</mat-dialog-actions>

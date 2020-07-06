@@ -45,7 +45,8 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { TableExportComponent } from './table-export/table-export.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { FilesComponent } from './files/files.component';
-import { EditFilesDialogComponent } from './edit-files-dialog/edit-files-dialog.component';
+import { EditFileDialogComponent } from './edit-file-dialog/edit-file-dialog.component';
+import { EditFilePropertyDialogComponent } from './edit-file-property-dialog/edit-file-property-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { EditFilesDialogComponent } from './edit-files-dialog/edit-files-dialog.
     TableExportComponent,
     SearchFormComponent,
     FilesComponent,
-    EditFilesDialogComponent
+    EditFileDialogComponent,
+    EditFilePropertyDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +122,8 @@ import { EditFilesDialogComponent } from './edit-files-dialog/edit-files-dialog.
     ])
   ],
   entryComponents: [
-    EditFilesDialogComponent
+    EditFileDialogComponent,
+    EditFilePropertyDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { File } from '../files/files.component';
 
 @Component({
-  selector: 'app-edit-files-dialog',
-  templateUrl: './edit-files-dialog.component.html',
-  styleUrls: ['./edit-files-dialog.component.css']
+  selector: 'app-edit-file-dialog',
+  templateUrl: './edit-file-dialog.component.html',
+  styleUrls: ['./edit-file-dialog.component.css']
 })
-export class EditFilesDialogComponent implements OnInit {
+export class EditFileDialogComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   updatedFile: File = {} as File;
 
