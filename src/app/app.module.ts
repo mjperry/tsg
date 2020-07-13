@@ -47,6 +47,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { FilesComponent } from './files/files.component';
 import { EditFileDialogComponent } from './edit-file-dialog/edit-file-dialog.component';
 import { EditFilePropertyDialogComponent } from './edit-file-property-dialog/edit-file-property-dialog.component';
+import { NotesComponent } from './notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { EditFilePropertyDialogComponent } from './edit-file-property-dialog/edi
     SearchFormComponent,
     FilesComponent,
     EditFileDialogComponent,
-    EditFilePropertyDialogComponent
+    EditFilePropertyDialogComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +120,10 @@ import { EditFilePropertyDialogComponent } from './edit-file-property-dialog/edi
       {
         path: 'files',
         component: FilesComponent
+      },
+      {
+        path: 'notes',
+        component: NotesComponent
       }
     ])
   ],
