@@ -5,6 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditFileDialogComponent } from '../edit-file-dialog/edit-file-dialog.component';
 import { EditFilePropertyDialogComponent } from '../edit-file-property-dialog/edit-file-property-dialog.component';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 export interface File {
   path: string;
@@ -30,6 +33,9 @@ export class FilesComponent implements OnInit {
   'mission', 'collector', 'duration', 'tags', 'actions'];
   dataSource = new MatTableDataSource<File>();
   selection = new SelectionModel<File>(true, []);
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
   files: File[] = [
     { path: "/path1", filename: 'File1', 
     owner: "Mike", status: "Active", country: "USA", date: "2020-01-01T12:00:00Z",
@@ -47,12 +53,19 @@ export class FilesComponent implements OnInit {
     owner: "Mike", status: "Active", country: "USA", date: "2020-01-05T12:00:00Z",
     system: "MNO", mission: 555, collector: 5, duration: 5, tags: ["tag5"]},
   ];
+  selectedOption = '';
+  selectedOptions: string[] = [];
 
   constructor(public dialog: MatDialog,
               private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataSource.data = this.files;
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -86,6 +99,15 @@ export class FilesComponent implements OnInit {
     });
   }
 
+  onSelection(value: any) {
+    const index = this.options.indexOf(value);
+    if (index >= 0) {
+      this.options.splice(index, 1);
+    }
+    this.selectedOptions.push(value);
+    this.myControl.setValue('');
+  }
+
   openEditFilesDialog(propType: string) {
     const dialogRef = this.dialog.open(EditFilePropertyDialogComponent, {
       data: {
@@ -106,6 +128,21 @@ export class FilesComponent implements OnInit {
         });
       }
     });
+  }
+
+  removeOption(option: string) {
+    const index = this.selectedOptions.indexOf(option);
+    if (index >= 0) {
+      this.selectedOptions.splice(index, 1);
+    }
+    this.options.push(option);
+    this.options.sort();
+    this.myControl.setValue('');
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   private _updateFile(updatedFile: File) {
