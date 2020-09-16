@@ -26,3 +26,30 @@ $tsg-theme: mat-light-theme($tsg-primary, $tsg-accent, $tsg-warn);
 // that you are using.
 @include angular-material-theme($tsg-theme);
 
+.app-paginator {
+    background: #3f51b5; 
+    width: 100%; 
+    color: white;
+    font-weight: 700;
+}
+
+.app-paginator .mat-select-value {
+    color: white;
+    font-weight: 700;
+}
+
+.app-paginator .mat-select-arrow {
+    color: white;
+}
+
+.app-paginator .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: white;
+}
+
+.app-paginator .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: white;
+}
+
+.app-paginator .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+    color: white;
+}

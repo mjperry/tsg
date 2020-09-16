@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
 import { EditFileDialogComponent } from '../edit-file-dialog/edit-file-dialog.component';
 import { EditFilePropertyDialogComponent } from '../edit-file-property-dialog/edit-file-property-dialog.component';
 import {FormControl} from '@angular/forms';
@@ -56,11 +57,14 @@ export class FilesComponent implements OnInit {
   selectedOption = '';
   selectedOptions: string[] = [];
 
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor(public dialog: MatDialog,
               private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataSource.data = this.files;
+    this.dataSource.paginator = this.paginator;
     this.filteredOptions = this.myControl.valueChanges
     .pipe(
       startWith(''),

@@ -1,5 +1,6 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ExportService } from  '../export.service';
 
@@ -28,12 +29,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './table-export.component.html',
   styleUrls: ['./table-export.component.css']
 })
-export class TableExportComponent {
+export class TableExportComponent implements OnInit{
   displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor(private exportService: ExportService) { }
+
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
